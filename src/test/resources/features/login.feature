@@ -29,19 +29,20 @@ Feature: Login 3 - With parameters and Scenario Outline
       | asdaw           | sdf323'+%   |
 
 
-  @wip
-  Scenario Outline: "Please fill out this field" message should be displayed if the password or username is empty
-    When The user tries to login with "<username>" and "<password>"
-    Then The user should see "Please fill out this field" message if "<username>" or "<password>" is empty
+  Scenario: "Please fill out this field" message should be displayed if the password or username is empty
+     When The user tries to login with "salesmanager101" and ""
+     Then The user should see "Please fill out this field." message if password is empty
 
-    Examples:
-      | username        | password    |
-      | salesmanager101 |             |
-      |                 | UserUser123 |
+  @wip
+  Scenario: "Please fill out this field" message should be displayed if the password or username is empty
+    When The user tries to login with "" and "UserUser123"
+    Then And The user should see "Please fill out this field." message if username is empty
+
+
+
 
 
   Scenario: User land on the ‘Forgot Password’ page after clicking on the "Forgot your password?" link
-
 
 
 
