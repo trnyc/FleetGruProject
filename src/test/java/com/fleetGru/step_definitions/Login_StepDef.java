@@ -79,13 +79,19 @@ public class Login_StepDef {
 
     @Then("The user should see {string} message if {string} or {string} is empty")
     public void theUserShouldSeeMessageIfOrIsEmpty(String expectedMessage, String userName, String pw) {
-        if (pw == null) {
-            String actualMessage = Driver.getDriver().findElement(By.id("prependedInput2")).getAttribute("validationMessage");
-            Assert.assertEquals(expectedMessage, actualMessage);
-        } else if (userName == null) {
+
+        if (pw.equals(null)) {
             String actualMessage = Driver.getDriver().findElement(By.id("prependedInput")).getAttribute("validationMessage");
             Assert.assertEquals(expectedMessage, actualMessage);
+
+        } else if (userName.equals(null)) {
+            String actualMessage = Driver.getDriver().findElement(By.id("prependedInput2")).getAttribute("validationMessage");
+            Assert.assertEquals(expectedMessage, actualMessage);
+
+
         }
+
+
     }
 
 
