@@ -84,10 +84,10 @@ public class Login_StepDef {
             String actualMessage = Driver.getDriver().findElement(By.id("prependedInput")).getAttribute("validationMessage");
             Assert.assertEquals(expectedMessage, actualMessage);
 
+
         } else if (userName.equals(null)) {
             String actualMessage = Driver.getDriver().findElement(By.id("prependedInput2")).getAttribute("validationMessage");
             Assert.assertEquals(expectedMessage, actualMessage);
-
 
         }
 
