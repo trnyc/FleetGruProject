@@ -29,32 +29,29 @@ Feature: Login 3 - With parameters and Scenario Outline
       | asdaw           | sdf323'+%   |
 
 
-  #@wip
-  #  Scenario Outline: "Please fill out this field" message should be displayed if the password or username is empty
-  #    When The user tries to login with "<username>" and "<password>"
-  #    Then The user should see "Please fill out this field1" message if "<username>" or "<password>" is empty
-  #
-  #    Examples:
-  #      | username        | password    |
-  #      | salesmanager101 |             |
-  #      |                 | UserUser123 |
-
-
   Scenario: "Please fill out this field" message should be displayed if the password or username is empty
-     When The user tries to login with "salesmanager101" and ""
-     Then The user should see "Please fill out this field." message if password is empty
+    When The user tries to login with "salesmanager101" and ""
+    Then The user should see "Please fill out this field." message if password is empty
 
-  @wip
+
   Scenario: "Please fill out this field" message should be displayed if the password or username is empty
     When The user tries to login with "" and "UserUser123"
-    Then And The user should see "Please fill out this field" message if username is empty
+    Then And The user should see "Please fill out this field." message if username is empty
 
 
+  Scenario: User lands on the ‘Forgot Password’ page after clicking on the "Forgot your password?" link
+    When The user clicks Forgot your password? link
+    Then The user should land on 'Forgot Password' page
 
 
+  Scenario: User can see "Remember Me" link exists and is clickable on the login page
+    When User can see Remember Me Link
+    Then User able to click on Remember Me link
 
-  Scenario: User land on the ‘Forgot Password’ page after clicking on the "Forgot your password?" link
-
+@wip
+  Scenario: User should see the password in bullet signs by default
+    When User can pass "anything" as a password
+    Then The password should be seen in bullet sign
 
 
 

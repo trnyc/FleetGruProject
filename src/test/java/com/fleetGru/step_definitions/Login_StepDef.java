@@ -90,15 +90,43 @@ public class Login_StepDef {
         Assert.assertEquals(expectedMessage, actualMessage);
     }
 
+    @When("The user clicks Forgot your password? link")
+    public void theUserClicksForgotYourPasswordLink() {
+        loginPage.forgotPwButton.click();
+    }
 
-    //prependedInput
+    @Then("The user should land on {string} page")
+    public void theUserShouldLandOnForgotPasswordPage(String expectedTitle) {
+        Assert.assertEquals(expectedTitle,Driver.getDriver().getTitle());
+    }
 
+    @When("User can see Remember Me Link")
+    public void userCanSeeRememberMeLink() {
+        loginPage.rememberMeLink.isDisplayed();
+    }
+
+    @Then("User able to click on Remember Me link")
+    public void userAbleToClickOnRememberMeLink() {
+        loginPage.rememberMeLink.click();
+        Assert.assertTrue(loginPage.rememberMeCheckBox.isSelected());
+    }
+
+    @When("User can pass {string} as a password")
+    public void userCanPassAnythingAsAPassword(String pw) {
+        loginPage.passwordField.sendKeys(pw);
+    }
+
+    @Then("The password should be seen in bullet sign")
+    public void thePasswordShouldBeSeenInBulletSign() {
+        Assert.assertEquals("password",loginPage.passwordField.getAttribute("type"));
+    }
 
 	/*@Test
 	public void test(){
 		Driver.getDriver().get(ConfigurationReader.get("url"));
-		String actualMessage= Driver.getDriver().findElement(By.id("prependedInput")).getAttribute("validationMessage");
-		System.out.println(actualMessage);
+		String actualMessage= loginPage.passwordField.getText();
+        String ex="anything";
+        Assert.assertEquals(ex,actualMessage);
 	}
 */
 

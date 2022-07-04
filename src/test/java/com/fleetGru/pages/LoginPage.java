@@ -14,7 +14,7 @@ public class LoginPage extends BasePage {
 	private WebElement usernameField;
 
 	@FindBy(id = "prependedInput2")
-	private WebElement passwordField;
+	public WebElement passwordField;
 
 	@FindBy(id = "_submit")
 	private WebElement loginBtn;
@@ -62,9 +62,14 @@ public class LoginPage extends BasePage {
 		return Driver.getDriver().getTitle();
 	}
 
+	@FindBy(linkText = "Forgot your password?")
+	public WebElement forgotPwButton;
 
+	@FindBy(id = "remember_me")
+	public WebElement rememberMeCheckBox;
 
-
+	@FindBy(xpath = "//span[.='Remember me on this computer']")
+	public WebElement rememberMeLink;
 
 
 }
