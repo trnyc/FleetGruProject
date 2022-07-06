@@ -6,12 +6,14 @@ import com.fleetGru.pages.LoginPage;
 import com.fleetGru.utilities.BrowserUtils;
 import com.fleetGru.utilities.ConfigurationReader;
 import com.fleetGru.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.util.List;
 import java.util.Map;
@@ -121,14 +123,45 @@ public class Login_StepDef {
         Assert.assertEquals("password",loginPage.passwordField.getAttribute("type"));
     }
 
-	/*@Test
+
+    @Then("User should login with Enter key when cursor on the user input box")
+    public void userShouldLoginWithEnterKeyWhenCursorOnTheUserInputBox() {
+        loginPage.usernameField.sendKeys(Keys.ENTER);
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(homePage.pageSubtitle.isDisplayed());
+    }
+
+
+    @And("User should login with Enter key when cursor on the password input box")
+    public void userShouldLoginWithEnterKeyWhenCursorOnThePasswordInputBox() {
+        loginPage.passwordField.sendKeys(Keys.ENTER);
+        BrowserUtils.sleep(5);
+        Assert.assertTrue(homePage.pageSubtitle.isDisplayed());
+    }
+
+    @When("The user inputs {string} and {string}")
+    public void theUserInputsAnd(String username, String pw) {
+        loginPage.inputCredentials(username,pw);
+    }
+
+	/*
+	@Test
 	public void test(){
 		Driver.getDriver().get(ConfigurationReader.get("url"));
-		String actualMessage= loginPage.passwordField.getText();
-        String ex="anything";
-        Assert.assertEquals(ex,actualMessage);
-	}
-*/
+        loginPage.usernameField.sendKeys("user1");
+        loginPage.passwordField.sendKeys("UserUser123"+Keys.ENTER);
+
+        Assert.assertEquals("user",Driver.getDriver().findElement(By.id("user-menu")).getText());
 
 
+	}*/
+
+
+    @Then("User should see his {string} in profile menu")
+    public void userShouldSeeHisInProfileMenu(String expectedUserName) {
+        homePage.waitUntilLoaderScreenDisappear();
+        String actualUserName= homePage.userInfoGet();
+        Assert.assertEquals("User name matching error!",expectedUserName,actualUserName);
+
+    }
 }

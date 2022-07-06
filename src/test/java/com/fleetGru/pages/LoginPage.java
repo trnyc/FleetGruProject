@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
 	//---locators----------------
 
 	@FindBy(id = "prependedInput")
-	private WebElement usernameField;
+	public WebElement usernameField;
 
 	@FindBy(id = "prependedInput2")
 	public WebElement passwordField;
@@ -57,6 +57,13 @@ public class LoginPage extends BasePage {
 		passwordField.sendKeys(password);
 		loginBtn.click();
 	}
+
+	public void inputCredentials(String username, String password){
+		usernameField.sendKeys(username);
+		passwordField.sendKeys(password);
+
+	}
+
 
 	public String getPageTitle(){
 		return Driver.getDriver().getTitle();
