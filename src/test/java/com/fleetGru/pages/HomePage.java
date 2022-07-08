@@ -16,6 +16,12 @@ public class HomePage extends BasePage {
     @FindBy(id = "user-menu")
     public static WebElement userInfo;
 
+    @FindBy(xpath = "//a[.='Logout']")
+    public WebElement logoutButton;
+
+    @FindBy(linkText = "Fleet Management")
+    public WebElement fleetHompageLink;
+
 
 
     public String userInfoGet() {
