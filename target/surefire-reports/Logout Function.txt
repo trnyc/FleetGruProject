@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: Logout Function
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 79.718 s <<< FAILURE! - in Logout Function
+Logout Function.The user must be logged out if the user close the open tab (all tabs if there are multiple open tabs)  Time elapsed: 31.162 s  <<< FAILURE!
+java.lang.AssertionError: Values should be different. Actual: Dashboard
+
